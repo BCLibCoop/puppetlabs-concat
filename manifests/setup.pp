@@ -32,7 +32,7 @@ class concat::setup {
   # version.
   $script_name = $::osfamily? {
     /(?i:(Windows|Solaris))/ => 'concatfragments.rb',
-    default                  => 'concatfragments.sh'
+    default                  => 'concatfragments.rb'
   }
 
   $script_path = "${concatdir}/bin/${script_name}"
