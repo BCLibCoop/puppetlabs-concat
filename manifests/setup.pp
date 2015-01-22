@@ -52,6 +52,10 @@ class concat::setup {
     backup => false,
   }
 
+  notify { $script_path:
+	  message => "${script_path} should be created with owner=${script_owner} mode=${script_mode} source=${script_source}"
+  }
+
   file { $script_path:
     ensure => file,
     owner  => $script_owner,
