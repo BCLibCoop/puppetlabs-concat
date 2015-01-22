@@ -41,6 +41,8 @@ class concat::setup {
 
   $script_mode = $::osfamily ? { 'windows' => undef, default => '0755' }
 
+  $script_source = "puppet:///modules/concat/${script_name}"
+
   $script_command = $::osfamily? {
     'windows' => "ruby.exe '${script_path}'",
     default   => $script_path
@@ -54,7 +56,7 @@ class concat::setup {
     ensure => file,
     owner  => $script_owner,
     mode   => $script_mode,
-    source => "puppet:///modules/concat/${script_name}",
+    source => $script_source,
   }
 
   file { [ $concatdir, "${concatdir}/bin" ]:
