@@ -48,9 +48,9 @@ class concat::setup {
     default   => $script_path
   }
 
-  File {
-    backup => false,
-  }
+  #File {
+  #  backup => false,
+  #}
 
   notify { $script_path:
 	  message => "${script_path} should be created with owner=${script_owner} mode=${script_mode} source=${script_source}"
